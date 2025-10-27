@@ -13,18 +13,16 @@ namespace CompAndDel
             PipeSerial pipeSerial1 = new PipeSerial(new FilterGreyscale(), pipeSerial2);
 
             PictureProvider provider = new PictureProvider();
-            IPicture picture = provider.GetPicture(@"beer.jpg");
+            IPicture picture = provider.GetPicture(@"../../../beer.jpg");
             
             //Acá va la serie de pipes
-            var firstClone = picture.Clone();
-            pipeSerial1.Send(firstClone);
-            var secondClone = firstClone.Clone();
-            pipeSerial2.Send(secondClone);
-            var thirdClone = secondClone.Clone();
-            pipeNull.Send(thirdClone);
-            IPicture result = thirdClone.Clone();
+            var firstFilter = pipeSerial1.Send(picture);
             
-            provider.SavePicture(result, @"beer1.jpg");
+            var secondFilter = pipeSerial2.Send(firstFilter);
+            
+            var thirdFilter = pipeNull.Send(secondFilter);
+            
+            provider.SavePicture(thirdFilter, @"../../../beer1.jpg");
         }
     }
 }
