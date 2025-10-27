@@ -17,12 +17,10 @@ namespace CompAndDel
             
             //Acá va la serie de pipes
             var firstFilter = pipeSerial1.Send(picture);
-            
+            provider.SavePicture(firstFilter, @"../../../beer1.0.jpg");
             var secondFilter = pipeSerial2.Send(firstFilter);
-            
+            provider.SavePicture(secondFilter, @"../../../beer_final.jpg");
             var thirdFilter = pipeNull.Send(secondFilter);
-            
-            provider.SavePicture(thirdFilter, @"../../../beer1.jpg");
         }
     }
 }

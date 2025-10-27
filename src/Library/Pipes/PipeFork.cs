@@ -18,10 +18,10 @@ namespace CompAndDel.Pipes
         /// <param name="tipoFiltro">Tipo de filtro que se debe aplicar sobre la imagen. Se crea un nuevo filtro con los parametros por defecto</param>
         /// <param name="nextPipe">Siguiente cañeria con filtro</param>
         /// <param name="next2Pipe">Siguiente cañeria sin filtro</param>
-        public PipeFork(IPipe nextPipe, IPipe next2Pipe) 
+        public PipeFork(IPipe nextPipe, IPipe next2Pipe)
         {
             this.next2Pipe = next2Pipe;
-            this.nextPipe = nextPipe;           
+            this.nextPipe = nextPipe;
         }
         
         /// <summary>
