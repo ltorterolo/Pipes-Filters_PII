@@ -10,17 +10,18 @@ namespace CompAndDel
         {
             PipeNull pipeNull = new PipeNull();
             PipeSerial pipeSerial2 = new PipeSerial(new FilterNegative(), pipeNull);
+            PipeSerial pipeSerial3 = new PipeSerial(new FilterPersist(), pipeNull);
+            PipeSerial pipeSerial4 = new PipeSerial(new FilterPersist(), pipeNull);
             PipeSerial pipeSerial1 = new PipeSerial(new FilterGreyscale(), pipeSerial2);
-
             PictureProvider provider = new PictureProvider();
             IPicture picture = provider.GetPicture(@"../../../beer.jpg");
             
             //Acá va la serie de pipes
             var firstFilter = pipeSerial1.Send(picture);
-            provider.SavePicture(firstFilter, @"../../../beer1.0.jpg");
+            var savePicture = pipeSerial3.Send(firstFilter);
             var secondFilter = pipeSerial2.Send(firstFilter);
-            provider.SavePicture(secondFilter, @"../../../beer_final.jpg");
             var thirdFilter = pipeNull.Send(secondFilter);
+            provider.SavePicture(thirdFilter, @"../../../beer_final.jpg");
         }
     }
 }
