@@ -22,6 +22,11 @@ namespace CompAndDel
             var secondFilter = pipeSerial2.Send(firstFilter);
             var thirdFilter = pipeNull.Send(secondFilter);
             provider.SavePicture(thirdFilter, @"../../../beer_final.jpg");
+            
+            
+            
+            var twitter = new TwitterImage();
+            Console.WriteLine(twitter.PublishToTwitter("text", @"PathToImage.png"));
         }
     }
 }
