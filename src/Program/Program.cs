@@ -16,17 +16,17 @@ namespace CompAndDel
             PipeSerial pipeSerial1 = new PipeSerial(new FilterGreyscale(), pipeSerial2);
             PictureProvider provider = new PictureProvider();
             IPicture picture = provider.GetPicture(@"../../../beer.jpg");
-            
+
+            PipeSerial twitter = new PipeSerial(new FilterTwitter("texto"))
+                
             //Acá va la serie de pipes
             var firstFilter = pipeSerial1.Send(picture);
             var savePicture = pipeSerial3.Send(firstFilter);
+            var publish = twitter.Send(firstFilter);
             var secondFilter = pipeSerial2.Send(firstFilter);
             var thirdFilter = pipeNull.Send(secondFilter);
             provider.SavePicture(thirdFilter, @"../../../beer_final.jpg");
             
-            //publicar en twitter 
-            var twitter = new TwitterImage();
-            Console.WriteLine(twitter.PublishToTwitter("text", @"PathToImage.png"));
         }
     }
 }
