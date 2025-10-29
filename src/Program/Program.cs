@@ -9,6 +9,8 @@ namespace CompAndDel
     {
         static void Main(string[] args)
         {
+            static string pathActual = 
+                
             PipeNull pipeNull = new PipeNull();
             PipeSerial pipeSerial2 = new PipeSerial(new FilterNegative(), pipeNull);
             PipeSerial pipeSerial3 = new PipeSerial(new FilterPersist(), pipeNull);
@@ -25,8 +27,7 @@ namespace CompAndDel
             provider.SavePicture(thirdFilter, @"../../../beer_final.jpg");
             
             //publicar en twitter 
-            var twitter = new TwitterImage();
-            Console.WriteLine(twitter.PublishToTwitter("text", @"PathToImage.png"));
+            
         }
     }
 }
