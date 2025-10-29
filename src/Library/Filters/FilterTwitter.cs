@@ -10,6 +10,4 @@ public class FilterTwitter : IFilter
         var twitter = new TwitterImage();
         Console.WriteLine(twitter.PublishToTwitter("text", @"PathToImage.png"));
     }
-    
-    
 }
