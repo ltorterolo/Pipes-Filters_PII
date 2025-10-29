@@ -1,6 +1,7 @@
 ﻿using System;
 using CompAndDel.Pipes;
 using CompAndDel.Filters;
+using Ucu.Poo.Twitter;
 
 namespace CompAndDel
 {
@@ -23,8 +24,7 @@ namespace CompAndDel
             var thirdFilter = pipeNull.Send(secondFilter);
             provider.SavePicture(thirdFilter, @"../../../beer_final.jpg");
             
-            
-            
+            //publicar en twitter 
             var twitter = new TwitterImage();
             Console.WriteLine(twitter.PublishToTwitter("text", @"PathToImage.png"));
         }
